@@ -1,0 +1,2 @@
+python prepare_datasets_DRIVE.py
+pause

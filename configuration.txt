@@ -1,0 +1,57 @@
+[data paths]
+path_local =  ./datasets_drive/
+train_imgs_original = DRIVE_dataset_imgs_train.hdf5
+train_groundTruth = DRIVE_dataset_groundTruth_train.hdf5
+train_border_masks = DRIVE_dataset_borderMasks_train.hdf5
+test_imgs_original = DRIVE_dataset_imgs_test.hdf5
+test_groundTruth = DRIVE_dataset_groundTruth_test1.hdf5
+test_border_masks = DRIVE_dataset_borderMasks_test.hdf5
+
+path_local1by1 =  ./datasets_drive1by1/
+test_imgs_original1by1 = DRIVE_dataset_imgs_test
+test_groundTruth1by1 = DRIVE_dataset_groundTruth_test
+test_border_masks1by1 = DRIVE_dataset_borderMasks_test
+
+[experiment name]
+name = CDNet
+
+[data attributes]
+#Dimensions of the patches extracted from the full images
+patch_height = 544
+patch_width = 544
+batch_size = 1
+with_mash = False
+permute1D = True
+
+[training settings]
+#Number of training epochs
+N_epochs = 10
+#if running with nohup
+nohup = False
+
+[testing settings]
+#Choose the model to test: best==epoch with min loss, last==last epoch, maxAcc_minLoss
+best_last = best
+#number of full images for the test (max 10)
+full_images_to_test = 20
+full_images_to_test1by1 = 1
+#How many original-groundTruth-prediction images are visualized in each image
+N_group_visual = 5
+#if running with nohup
+nohup = False
+
+[segment settings]
+#Dimensions of the patches extracted from the full images
+mode_path = CDNet
+imgs_path = ./testImgs
+output_path = out
+#Grouping of the predicted images
+N_visual = 1
+#the name of the predicted image
+input_img = 01_test.tif
+#the name of the mode's architecture
+structure_name = ./pretrained/CDNet_architecture.json
+#the name of the weight file of the mode
+weight_file_name = ./pretrained/CDNet_best_weights.h5
+#the name of the destination
+layer_name = seg92
